@@ -61,6 +61,7 @@ function rerenderItemsByTypeFilter(type) {
     let filterItems = (typeFilter === "All") ? totalItems : totalItems.filter((item)=>{
         return item.type === type;
     })
+    currentPage = 1;
     layoutItems(filterItems);
 }
 
