@@ -64,6 +64,28 @@ section {
     
 }
 
+.filter-division {
+    flex: 100%;
+    display: flex;
+    justify-content: center;  
+  }
+
+.filter-element {
+    display: flex;
+    margin: 0 auto;
+    height: 24px;
+    font-size: 14px;
+  }
+  
+  .filter-element span {
+    line-height: 24px;
+  }
+  
+  .filter-element select {
+    border-radius: 5px;
+    width: 100px;
+  }
+
 /* 調整列表內容的parent的寬度，只列表內容自動調到下一排 */
 @media screen and (max-width:600px) {
     section {
