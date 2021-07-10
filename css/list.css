@@ -75,6 +75,7 @@ section {
     margin: 0 auto;
     height: 24px;
     font-size: 14px;
+    
   }
   
   .filter-element span {
@@ -85,6 +86,41 @@ section {
     border-radius: 5px;
     width: 100px;
   }
+
+
+  .pagination_div{
+    flex:100%;
+    display: flex;
+    justify-content: center; 
+  }
+
+  .pagination{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+  }
+
+  .pagination li {
+    color: #050557;
+    border: 1px solid #cccbca;
+    border-radius: 5px;
+    padding: 2px 8px;
+    cursor: pointer;
+    margin: 0 1px;
+  }
+  .pagination li.active{
+      background-color: #ccd8f7;
+  }
+
+  .pagination li.disabled{
+      background-color: rgb(241, 239, 239);
+      color: rgb(241, 239, 239);
+      border-color: #cccbca;
+  }
+
+
+
+
 
 /* 調整列表內容的parent的寬度，只列表內容自動調到下一排 */
 @media screen and (max-width:600px) {

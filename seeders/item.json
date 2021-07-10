@@ -63,6 +63,22 @@
         "gender":"Female",
         "description":"Invisibility is my superpower",
         "image_link": "imgs/IMG_Snow.jpg"
-        } 
+        },
+    {
+        "name":"Rogie",
+        "type":"Chinchila",
+        "age":2,
+        "gender":"Male",
+        "description":"Food is everything",
+        "image_link":"imgs/IMG_Rogie.jpeg"
+        },
+    {
+        "name":"Rogie",
+        "type":"Chinchila",
+        "age":2,
+        "gender":"Male",
+        "description":"Food is everything",
+        "image_link":"imgs/IMG_Rogie.jpeg"
+        }
     ]
 }
