@@ -49,9 +49,14 @@
         } 
 ];*/
 
+let typeCategorySet = new Set();
+let totalItems = [];
+let typeFilter = "All";
+
 function layoutItems(items){
     let layout_var=document.getElementById('items_layout');
-    layout_var.innerHTML="";
+    layout_var.innerHTML = '<div id="filter-division" class="filter-division"></div>';
+    
     /*
     function constructItemsHTML(item){
         let item_html="";
@@ -66,6 +71,7 @@ function layoutItems(items){
 
         layout_var.innerHTML+=item_html;
     };*/
+    
     items.forEach(function(item){
         let item_html="";
         item_html+="<div class=item>";
@@ -78,17 +84,43 @@ function layoutItems(items){
         item_html+='</div>';
 
         layout_var.innerHTML+=item_html;
+        typeCategorySet.add(item.type);
     })
+    
+    renderDataFilter();
 }
 /*layoutItems()*/
 
+function rerenderItemsByTypeFilter(type) {
+    typeFilter = type;
+    let filterItems = (typeFilter === "All") ? totalItems : totalItems.filter((item)=>{
+        return item.type === type;
+    })
+    layoutItems(filterItems);
+}
+
+function renderDataFilter() {
+    const typeCategoryArray = Array.from(typeCategorySet)
+    items_layout.innerHTML +=
+        `<div id="filter-element" class="filter-element">
+            <span>Type:</span>
+            <select onchange="rerenderItemsByTypeFilter(this.options[this.selectedIndex].value);">
+                <option value="All">All</option>
+                ${ typeCategoryArray.reduce((accumulator, currentValue, currentIndex)=>{
+                    return accumulator += `<option value="${currentValue}" ${typeFilter === currentValue ? "selected":""}>${currentValue}</option>`
+                }, "")}
+            </select>
+        </div>`
+    document.getElementById('filter-division').appendChild(document.getElementById('filter-element'));
+}
 
 //讀取json file，將回傳的內容透過.json()轉成Object。再把裡面所需的資料放進前面寫好的layoutItems()功能裡面
 function readJSONFile(file) {
     fetch(file).then(response => {
         return response.json();
     }).then(data => {
-        layoutItems(data.items);
+        totalItems = data.items;
+        layoutItems(totalItems);
     });
 }
 
